@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:title="Here will be icon of main page" />
+
+    <item
+        android:id="@+id/navigation_uliss"
+        android:title="Here will be icon of second page" />
+
+    <item
+        android:id="@+id/navigation_timetable"
+        android:title="Here will be icon of settings" />
+</menu>

@@ -13,5 +13,5 @@
         android:background="@drawable/rounder"
         android:textColor="#FFADAD"
         android:textSize="20sp"
-        android:text="@string/CurHeader" />
+        android:text="Некоторые новости" />
 </LinearLayout>
