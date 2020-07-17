@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DInfo</string>
+    <string name="CurHeader">Последние курсы валют</string>
 </resources>
