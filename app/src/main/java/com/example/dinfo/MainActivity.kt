@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
                 "Широта:" + location?.latitude.toString() + "\n Долгота:" + location?.longitude.toString(),
                 Toast.LENGTH_LONG
             ).show()
+            val gt=DataLoader()
+            gt.GetLocation(location?.latitude!!, location?.longitude!!,this@MainActivity)
             //Здесь будет получение данных
             //Необходимо добавить диалог на разрешение получения местоположения
 
