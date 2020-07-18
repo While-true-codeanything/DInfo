@@ -4,6 +4,7 @@ import Json4Kotlin_Base
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 class Interfaces {
     interface CurrencyService {
@@ -18,10 +19,10 @@ class Interfaces {
         ): Call<String>// Здесь будет класс ответа
     }
     interface GeoService {
-        @GET("https://geocode-maps.yandex.ru/1.x/?apikey=0e48661b-a37c-40d2-b35a-de0b3aeef557&format=json&geocode={lat},{lon}")
+        @GET("https://geocode-maps.yandex.ru/1.x/?apikey=0e48661b-a37c-40d2-b35a-de0b3aeef557&format=json&geocode=")
         fun getLocation(
-            @Path("lat") lat: Double,
-            @Path("lon") lon: Double
+            @Query("lat") lat: Double,
+            @Query("lon") lon: Double
         ): Call<Json4Kotlin_Base>
     }
 }

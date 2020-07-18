@@ -12,11 +12,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class DataLoader {
-    fun GetLocation(lat:Double, long:Double,context:Context): Json4Kotlin_Base{
-        var res:Json4Kotlin_Base=Json4Kotlin_Base(null)
+    fun GetLocation(lat:Double, long:Double,context:Context): String{
+        var res:String="Ошибка определения местоположения"
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://geocode-maps.yandex.ru/") //unused
+            .baseUrl("https://geocode-maps.yandex.ru") //unused
             .build()
 
         val service: Interfaces.GeoService =
@@ -30,8 +30,7 @@ class DataLoader {
                 call: Call<Json4Kotlin_Base?>?,
                 response: Response<Json4Kotlin_Base?>
             ) {
-                pd.dismiss()
-                res= response.body()!!
+                res= response.body()!!.response.geoObjectCollection.featureMember.get(0).geoObject.description
             }
 
             override fun onFailure(call: Call<Json4Kotlin_Base?>?, t: Throwable?) {
@@ -39,9 +38,9 @@ class DataLoader {
                     context, "Ошибка, проверьте подключение к интернету или доступность сервиса!",
                     Toast.LENGTH_LONG
                 ).show()
-                pd.dismiss()
             }
         })
+        pd.dismiss()
         return res // ошибок быть не должно, только если в работе сервиса
     }
 }

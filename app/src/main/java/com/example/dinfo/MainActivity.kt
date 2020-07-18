@@ -39,7 +39,12 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
             val gt=DataLoader()
-            gt.GetLocation(location?.latitude!!, location?.longitude!!,this@MainActivity)
+            Toast.makeText(
+                this@MainActivity,
+                gt.GetLocation(location?.latitude!!, location?.longitude!!,this@MainActivity),
+                Toast.LENGTH_LONG
+            ).show()
+
             //Здесь будет получение данных
             //Необходимо добавить диалог на разрешение получения местоположения
 
