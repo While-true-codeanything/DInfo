@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DInfo</string>
     <string name="CurHeader">Последние курсы валют</string>
+    <string name="restart_app">Перезапустить приложение</string>
 </resources>
