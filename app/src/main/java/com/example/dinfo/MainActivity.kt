@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             ).show()
             val gt = DataLoader()
             val k = gt.GetLocation(location?.latitude!!, location?.longitude!!, this@MainActivity)
-
+            gt.GetWeather(location?.latitude!!, location?.longitude!!, this@MainActivity)
             AllAppData.GeoPosition=k
             //Здесь будет получение данных
             //Необходимо добавить диалог на разрешение получения местоположения

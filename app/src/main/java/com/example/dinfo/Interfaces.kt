@@ -1,6 +1,7 @@
 package com.example.dinfo
 
 import com.example.example.MainGeoResponse
+import com.example.example.MainWeatherResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,11 +13,11 @@ class Interfaces {
         fun data(): Call<String> // Здесь будет класс ответа
     }
     interface WeatherService {
-        @GET("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat={lat}&lon={lon}")
+        @GET("https://api.met.no/weatherapi/locationforecast/2.0/compact?")
         fun getWeather(
-            @Path("lat") lat: Double,
-            @Path("lon") lon: Double
-        ): Call<String>// Здесь будет класс ответа
+            @Query("lat") lat: String,
+            @Query("lon") lon: String
+        ): Call<MainWeatherResponse>// Здесь будет класс ответа
     }
     interface GeoService {
         @GET("/1.x/?apikey=0e48661b-a37c-40d2-b35a-de0b3aeef557&format=json")
