@@ -1,5 +1,11 @@
-data class AdministrativeArea(
+package com.example.example
 
-    val administrativeAreaName: String,
-    val subAdministrativeArea: SubAdministrativeArea
+import com.google.gson.annotations.SerializedName
+
+   
+data class AdministrativeArea (
+
+   @SerializedName("AdministrativeAreaName") var AdministrativeAreaName : String,
+   @SerializedName("SubAdministrativeArea") var SubAdministrativeArea : SubAdministrativeArea
+
 )

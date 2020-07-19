@@ -1,4 +1,10 @@
-data class Response(
+package com.example.example
 
-    val geoObjectCollection: GeoObjectCollection
+import com.google.gson.annotations.SerializedName
+
+   
+data class Response (
+
+   @SerializedName("GeoObjectCollection") var GeoObjectCollection : GeoObjectCollection
+
 )

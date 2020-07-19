@@ -1,6 +1,13 @@
-data class GeocoderResponseMetaData(
+package com.example.example
 
-    val request: String,
-    val results: Int,
-    val found: Int
+import com.google.gson.annotations.SerializedName
+
+   
+data class GeocoderResponseMetaData (
+
+   @SerializedName("Point") var Point : Point,
+   @SerializedName("request") var request : String,
+   @SerializedName("results") var results : String,
+   @SerializedName("found") var found : String
+
 )

@@ -1,5 +1,11 @@
-data class Locality(
+package com.example.example
 
-    val localityName: String,
-    val premise: Premise
+import com.google.gson.annotations.SerializedName
+
+   
+data class Locality (
+
+   @SerializedName("LocalityName") var LocalityName : String,
+   @SerializedName("Premise") var Premise : Premise
+
 )

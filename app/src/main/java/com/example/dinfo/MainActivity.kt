@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             // Здесь будет обработка ошибок
             // Надо добавить проверку на интернет
             return
-        } else loc.requestSingleUpdate(LocationManager.GPS_PROVIDER, listener, null)
+        } else loc.requestSingleUpdate(LocationManager.GPS_PROVIDER , listener, null)
     }
 
     private val listener: LocationListener = object : LocationListener {
@@ -40,11 +40,7 @@ class MainActivity : AppCompatActivity() {
             ).show()
             val gt = DataLoader()
             val k = gt.GetLocation(location?.latitude!!, location?.longitude!!, this@MainActivity)
-            Toast.makeText(
-                this@MainActivity,
-                k,
-                Toast.LENGTH_LONG
-            ).show()
+
             AllAppData.GeoPosition=k
             //Здесь будет получение данных
             //Необходимо добавить диалог на разрешение получения местоположения

@@ -1,5 +1,11 @@
-data class GeoObjectCollection(
+package com.example.example
 
-    val metaDataProperty: MetaDataProperty,
-    val featureMember: List<FeatureMember>
+import com.google.gson.annotations.SerializedName
+
+   
+data class GeoObjectCollection (
+
+   @SerializedName("metaDataProperty") var metaDataProperty : MetaDataProperty,
+   @SerializedName("featureMember") var featureMember : List<FeatureMember>
+
 )

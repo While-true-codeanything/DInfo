@@ -1,5 +1,11 @@
-data class Envelope(
+package com.example.example
 
-    val lowerCorner: String,
-    val upperCorner: String
+import com.google.gson.annotations.SerializedName
+
+   
+data class Envelope (
+
+   @SerializedName("lowerCorner") var lowerCorner : String,
+   @SerializedName("upperCorner") var upperCorner : String
+
 )

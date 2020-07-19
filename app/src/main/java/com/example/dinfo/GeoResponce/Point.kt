@@ -3,8 +3,8 @@ package com.example.example
 import com.google.gson.annotations.SerializedName
 
    
-data class FeatureMember (
+data class Point (
 
-   @SerializedName("GeoObject") var GeoObject : GeoObject
+   @SerializedName("pos") var pos : String
 
 )

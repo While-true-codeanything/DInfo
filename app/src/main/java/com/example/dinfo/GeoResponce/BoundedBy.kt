@@ -1,4 +1,10 @@
-data class BoundedBy(
+package com.example.example
 
-    val envelope: Envelope
+import com.google.gson.annotations.SerializedName
+
+   
+data class BoundedBy (
+
+   @SerializedName("Envelope") var Envelope : Envelope
+
 )

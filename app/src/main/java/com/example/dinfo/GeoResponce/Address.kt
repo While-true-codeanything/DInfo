@@ -1,6 +1,12 @@
-data class Address(
+package com.example.example
 
-    val country_code: String,
-    val formatted: String,
-    val components: List<Components>
+import com.google.gson.annotations.SerializedName
+
+   
+data class Address (
+
+   @SerializedName("country_code") var countryCode : String,
+   @SerializedName("formatted") var formatted : String,
+   @SerializedName("Components") var Components : List<Components>
+
 )

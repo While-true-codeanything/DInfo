@@ -1,9 +1,10 @@
 package com.example.dinfo
 
-import Json4Kotlin_Base
+
 import android.app.ProgressDialog
 import android.content.Context
 import android.widget.Toast
+import com.example.example.MainGeoResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,7 +17,7 @@ class DataLoader {
         var res:String="Ошибка определения местоположения"
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://geocode-maps.yandex.ru") //unused
+            .baseUrl("https://geocode-maps.yandex.ru")
             .build()
 
         val service: Interfaces.GeoService =
@@ -25,15 +26,19 @@ class DataLoader {
             context, "", "Loading", true,
             false
         )//Пока устаревшее, но рабочее решение, потом заменим
-        service.getLocation(lat, long).enqueue(object : Callback<Json4Kotlin_Base?> {
+        service.getLocation("$long,$lat").enqueue(object : Callback<MainGeoResponse> {
             override fun onResponse(
-                call: Call<Json4Kotlin_Base?>?,
-                response: Response<Json4Kotlin_Base?>
+                call: Call<MainGeoResponse>,
+                response: Response<MainGeoResponse>
             ) {
-                res= response.body()!!.response.geoObjectCollection.featureMember.get(0).geoObject.description
+                Toast.makeText(
+                    context, response.body()?.response!!.GeoObjectCollection.featureMember[0].GeoObject.description,
+                    Toast.LENGTH_LONG
+                ).show()
+                /*res= response.body()!!.response.geoObjectCollection.featureMember.get(0).geoObject.description*/
             }
 
-            override fun onFailure(call: Call<Json4Kotlin_Base?>?, t: Throwable?) {
+            override fun onFailure(call: Call<MainGeoResponse?>, t: Throwable?) {
                 Toast.makeText(
                     context, "Ошибка, проверьте подключение к интернету или доступность сервиса!",
                     Toast.LENGTH_LONG

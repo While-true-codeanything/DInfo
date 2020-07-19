@@ -1,4 +1,10 @@
-data class Premise(
+package com.example.example
 
-    val premiseNumber: Int
+import com.google.gson.annotations.SerializedName
+
+   
+data class Premise (
+
+   @SerializedName("PremiseNumber") var PremiseNumber : String
+
 )

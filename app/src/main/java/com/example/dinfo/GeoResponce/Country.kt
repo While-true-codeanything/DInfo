@@ -1,7 +1,13 @@
-data class Country(
+package com.example.example
 
-    val addressLine: String,
-    val countryNameCode: String,
-    val countryName: String,
-    val administrativeArea: AdministrativeArea
+import com.google.gson.annotations.SerializedName
+
+   
+data class Country (
+
+   @SerializedName("AddressLine") var AddressLine : String,
+   @SerializedName("CountryNameCode") var CountryNameCode : String,
+   @SerializedName("CountryName") var CountryName : String,
+   @SerializedName("AdministrativeArea") var AdministrativeArea : AdministrativeArea
+
 )

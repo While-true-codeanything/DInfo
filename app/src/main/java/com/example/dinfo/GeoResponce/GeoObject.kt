@@ -1,7 +1,14 @@
-data class GeoObject(
+package com.example.example
 
-    val metaDataProperty: MetaDataProperty,
-    val name: String,
-    val description: String,
-    val boundedBy: BoundedBy
+import com.google.gson.annotations.SerializedName
+
+   
+data class GeoObject (
+
+   @SerializedName("metaDataProperty") var metaDataProperty : MetaDataProperty,
+   @SerializedName("name") var name : String,
+   @SerializedName("description") var description : String,
+   @SerializedName("boundedBy") var boundedBy : BoundedBy,
+   @SerializedName("Point") var Point : Point
+
 )

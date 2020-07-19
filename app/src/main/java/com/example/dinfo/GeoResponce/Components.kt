@@ -1,5 +1,11 @@
-data class Components(
+package com.example.example
 
-    val kind: String,
-    val name: String
+import com.google.gson.annotations.SerializedName
+
+   
+data class Components (
+
+   @SerializedName("kind") var kind : String,
+   @SerializedName("name") var name : String
+
 )

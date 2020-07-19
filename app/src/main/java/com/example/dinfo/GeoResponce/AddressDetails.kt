@@ -1,4 +1,10 @@
-data class AddressDetails(
+package com.example.example
 
-    val country: Country
+import com.google.gson.annotations.SerializedName
+
+   
+data class AddressDetails (
+
+   @SerializedName("Country") var Country : Country
+
 )
