@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             // Здесь будет обработка ошибок
             // Надо добавить проверку на интернет
             return
-        } else loc.requestSingleUpdate(LocationManager.GPS_PROVIDER , listener, null)
+        } else loc.requestSingleUpdate(LocationManager.NETWORK_PROVIDER , listener, null)
     }
 
     private val listener: LocationListener = object : LocationListener {

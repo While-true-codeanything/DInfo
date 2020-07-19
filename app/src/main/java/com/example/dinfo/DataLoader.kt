@@ -68,15 +68,15 @@ class DataLoader {
                 response: Response<MainWeatherResponse>
             ) {
                 Toast.makeText(
-                    context, response.body().,
+                    context, response.body().toString(),
                     Toast.LENGTH_LONG
                 ).show()
                 /*res= response.body()!!.response.geoObjectCollection.featureMember.get(0).geoObject.description*/
             }
 
-            override fun onFailure(call: Call<MainWeatherResponse?>, t: Throwable?) {
+            override fun onFailure(call: Call<MainWeatherResponse>, t: Throwable) {
                 Toast.makeText(
-                    context, "Ошибка, проверьте подключение к интернету или доступность сервиса!",
+                    context, t.message,
                     Toast.LENGTH_LONG
                 ).show()
             }
