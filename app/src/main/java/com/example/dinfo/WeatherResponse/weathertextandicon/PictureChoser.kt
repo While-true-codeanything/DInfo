@@ -51,7 +51,10 @@ class PictureChoser {
                 WTextAndIcon("Сильный дождь с грозой", R.drawable.heavyrainshowersandthunder_night)
             }
             "heavyrainshowersandthunder_polartwilight" -> {
-                WTextAndIcon("Сильный дождь с грозой", R.drawable.heavyrainshowersandthunder_polartwilight)
+                WTextAndIcon(
+                    "Сильный дождь с грозой",
+                    R.drawable.heavyrainshowersandthunder_polartwilight
+                )
             }
             "heavysleet" -> {
                 WTextAndIcon("Мокрый снег с дождем", R.drawable.heavysleet)
@@ -75,7 +78,10 @@ class PictureChoser {
                 WTextAndIcon("Мокрый снег с грозой", R.drawable.heavysleetshowersandthunder_night)
             }
             "heavysleetshowersandthunder_polartwilight" -> {
-                WTextAndIcon("Мокрый снег с грозой", R.drawable.heavysleetshowersandthunder_polartwilight)
+                WTextAndIcon(
+                    "Мокрый снег с грозой",
+                    R.drawable.heavysleetshowersandthunder_polartwilight
+                )
             }
             "heavysnow" -> {
                 WTextAndIcon("Снег", R.drawable.heavysnow)
@@ -123,7 +129,10 @@ class PictureChoser {
                 WTextAndIcon("Легкий дождь с грозой", R.drawable.lightrainshowersandthunder_night)
             }
             "lightrainshowersandthunder_polartwilight" -> {
-                WTextAndIcon("Легкий дождь с грозой", R.drawable.lightrainshowersandthunder_polartwilight)
+                WTextAndIcon(
+                    "Легкий дождь с грозой",
+                    R.drawable.lightrainshowersandthunder_polartwilight
+                )
             }
             "lightsleet" -> {
                 WTextAndIcon("Легкий мокрый снег", R.drawable.lightsleet)
@@ -156,13 +165,22 @@ class PictureChoser {
                 WTextAndIcon("Легкий снег", R.drawable.lightsnowshowers_polartwilight)
             }
             "lightssleetshowersandthunder_day" -> {
-                WTextAndIcon("Легкий мокрый снег с грозой", R.drawable.lightssleetshowersandthunder_day)
+                WTextAndIcon(
+                    "Легкий мокрый снег с грозой",
+                    R.drawable.lightssleetshowersandthunder_day
+                )
             }
             "lightssleetshowersandthunder_night" -> {
-                WTextAndIcon("Легкий мокрый снег с грозой", R.drawable.lightssleetshowersandthunder_night)
+                WTextAndIcon(
+                    "Легкий мокрый снег с грозой",
+                    R.drawable.lightssleetshowersandthunder_night
+                )
             }
             "lightssleetshowersandthunder_polartwilight" -> {
-                WTextAndIcon("Легкий мокрый снег с грозой", R.drawable.lightssleetshowersandthunder_polartwilight)
+                WTextAndIcon(
+                    "Легкий мокрый снег с грозой",
+                    R.drawable.lightssleetshowersandthunder_polartwilight
+                )
             }
             "lightssnowshowersandthunder_day" -> {
                 WTextAndIcon("Легкий снег с грозой", R.drawable.lightssnowshowersandthunder_day)
@@ -171,7 +189,10 @@ class PictureChoser {
                 WTextAndIcon("Легкий снег с грозой", R.drawable.lightssnowshowersandthunder_night)
             }
             "lightssnowshowersandthunder_polartwilight" -> {
-                WTextAndIcon("Легкий снег с грозой", R.drawable.lightssnowshowersandthunder_polartwilight)
+                WTextAndIcon(
+                    "Легкий снег с грозой",
+                    R.drawable.lightssnowshowersandthunder_polartwilight
+                )
             }
             "partlycloudy_day" -> {
                 WTextAndIcon("Облачно", R.drawable.partlycloudy_day)
@@ -228,7 +249,10 @@ class PictureChoser {
                 WTextAndIcon("Дождь со снегом и грозой", R.drawable.sleetshowersandthunder_night)
             }
             "sleetshowersandthunder_polartwilight" -> {
-                WTextAndIcon("Дождь со снегом и грозой", R.drawable.sleetshowersandthunder_polartwilight)
+                WTextAndIcon(
+                    "Дождь со снегом и грозой",
+                    R.drawable.sleetshowersandthunder_polartwilight
+                )
             }
             "snow" -> {
                 WTextAndIcon("Снег", R.drawable.snow)

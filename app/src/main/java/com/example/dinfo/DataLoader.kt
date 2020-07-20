@@ -27,7 +27,7 @@ class DataLoader {
                 AllAppData.GeoPositionLoaded = true
                 AllAppData.GeoPosition =
                     response.body()?.response!!.GeoObjectCollection.featureMember[0].GeoObject.description
-                if (AllAppData.isAllData()) ma.setAMainPage()
+                if (AllAppData.isAllData()) ma.loadFragment(MainPageFragment())
             }
 
             override fun onFailure(call: Call<MainGeoResponse?>, t: Throwable?) {
@@ -54,7 +54,7 @@ class DataLoader {
                 ) {
                     AllAppData.WeatherLoaded = true
                     AllAppData.WeatherItem = response.body()!!
-                    if (AllAppData.isAllData()) ma.setAMainPage()
+                    if (AllAppData.isAllData())ma.loadFragment(MainPageFragment())
                 }
 
                 override fun onFailure(call: Call<MainWeatherResponse>, t: Throwable) {

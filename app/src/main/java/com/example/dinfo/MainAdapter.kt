@@ -4,21 +4,18 @@ import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dinfo.WeatherResponse.weathertextandicon.PictureChoser
-import com.example.dinfo.WeatherResponse.weathertextandicon.WTextAndIcon
 import com.example.example.Timeseries
 import kotlinx.android.synthetic.main.date_item.view.*
 import kotlinx.android.synthetic.main.location_item.view.*
 import kotlinx.android.synthetic.main.weather_item.view.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
-class MainAdapter (var Main:MainActivity) :
+class MainAdapter() :
 
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var position2 = -1
@@ -91,7 +88,9 @@ class MainAdapter (var Main:MainActivity) :
             val holder = holder as WeatherHolder
             PictureChoser().GetIconAndText(curWeatherData!!.data.next1Hours.summary.symbolCode).Wtext
             holder.Temperature.text =
-                curWeatherData!!.data.instant.details.airTemperature.toString() + "°, " + PictureChoser().GetIconAndText(curWeatherData.data.next1Hours.summary.symbolCode).Wtext
+                curWeatherData!!.data.instant.details.airTemperature.toString() + "°, " + PictureChoser().GetIconAndText(
+                    curWeatherData.data.next1Hours.summary.symbolCode
+                ).Wtext
             holder.Humidity.text = holder.Humidity.text.toString()
                 .plus(" " + curWeatherData!!.data.instant.details.relativeHumidity + AllAppData.WeatherItem.properties.meta.units.relativeHumidity)
             holder.Speed.text = holder.Speed.text.toString()

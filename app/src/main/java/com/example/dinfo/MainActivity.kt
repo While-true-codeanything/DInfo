@@ -5,6 +5,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.icu.text.CaseMap
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -12,15 +13,19 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_page.*
 
 class MainActivity : AppCompatActivity() {
-    fun setAMainPage() {
+    fun loadFragment(fragment: Fragment) {
         pd.dismiss()
-        MainContent.adapter = MainAdapter(this)
+        val ft =
+            supportFragmentManager.beginTransaction()
+        ft.replace(R.id.Place, fragment)
+        ft.commit()
     }
-
     lateinit var pd: ProgressDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,12 +53,18 @@ class MainActivity : AppCompatActivity() {
         Navigation.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
+                    title="DInfo"
+                    loadFragment(MainPageFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_viewsettings -> {
+                    title="Info Settings"
+                    loadFragment(SettingsFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_settings -> {
+                    title="App Settings"
+                    loadFragment(AppSettingsFragment())
                     return@OnNavigationItemSelectedListener true
                 }
             }
