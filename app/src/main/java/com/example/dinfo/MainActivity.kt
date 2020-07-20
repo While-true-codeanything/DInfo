@@ -2,6 +2,7 @@ package com.example.dinfo
 
 import android.Manifest
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -10,11 +11,18 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    fun setAMainPage() {
+        MainContent.adapter = MainAdapter()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         var loc: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -28,7 +36,21 @@ class MainActivity : AppCompatActivity() {
             // Здесь будет обработка ошибок
             // Надо добавить проверку на интернет
             return
-        } else loc.requestSingleUpdate(LocationManager.NETWORK_PROVIDER , listener, null)
+        } else loc.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, listener, null)
+        Navigation.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_viewsettings -> {
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_settings -> {
+                    return@OnNavigationItemSelectedListener true
+                }
+            }
+            false
+        })
     }
 
     private val listener: LocationListener = object : LocationListener {
@@ -39,9 +61,8 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
             val gt = DataLoader()
-            val k = gt.GetLocation(location?.latitude!!, location?.longitude!!, this@MainActivity)
+            gt.GetLocation(location?.latitude!!, location?.longitude!!, this@MainActivity)
             gt.GetWeather(location?.latitude!!, location?.longitude!!, this@MainActivity)
-            AllAppData.GeoPosition=k
             //Здесь будет получение данных
             //Необходимо добавить диалог на разрешение получения местоположения
 

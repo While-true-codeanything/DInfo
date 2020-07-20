@@ -16,7 +16,7 @@ class Interfaces {
         fun getWeather(
             @Query("lat") lat: String,
             @Query("lon") lon: String
-        ): Call<MainWeatherResponse>// Здесь будет класс ответа
+        ): Call<MainWeatherResponse>
     }
     interface GeoService {
         @GET("/1.x/?apikey=0e48661b-a37c-40d2-b35a-de0b3aeef557&format=json")
