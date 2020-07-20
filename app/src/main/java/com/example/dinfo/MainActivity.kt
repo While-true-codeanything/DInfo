@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             // Надо добавить проверку на интернет
             return
         } else {
-            pd= ProgressDialog(this)
+            pd = ProgressDialog(this)
             pd.setMessage("Загрузка данныx!\nПожалуйста подождите")
             pd.show()
             loc.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, listener, null)
@@ -63,11 +63,11 @@ class MainActivity : AppCompatActivity() {
 
     private val listener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location?) {
-            Toast.makeText(
+            /*Toast.makeText(
                 this@MainActivity,
                 "Широта:" + location?.latitude.toString() + "\n Долгота:" + location?.longitude.toString(),
                 Toast.LENGTH_LONG
-            ).show()
+            ).show()*/
             val gt = DataLoader()
             gt.GetLocation(location?.latitude!!, location?.longitude!!, this@MainActivity)
             gt.GetWeather(location?.latitude!!, location?.longitude!!, this@MainActivity)
