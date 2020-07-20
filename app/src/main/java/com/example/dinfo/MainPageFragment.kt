@@ -18,7 +18,7 @@ class MainPageFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        this.activity!!.MainContent.adapter = MainAdapter()
+        this.activity!!.MainContent.adapter = MainAdapter(activity as MainActivity)
     }
 
 }

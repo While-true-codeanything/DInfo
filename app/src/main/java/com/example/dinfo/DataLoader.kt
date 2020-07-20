@@ -1,6 +1,7 @@
 package com.example.dinfo
 
 
+import MainNewsResponse
 import android.widget.Toast
 import com.example.example.MainGeoResponse
 import com.example.example.MainWeatherResponse
@@ -58,6 +59,32 @@ class DataLoader {
                 }
 
                 override fun onFailure(call: Call<MainWeatherResponse>, t: Throwable) {
+                    Toast.makeText(
+                        ma, t.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
+    }
+    fun GetNews(lang: String, ma: MainActivity) {
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("http://newsapi.org")
+            .build()
+        val service: Interfaces.NewsService =
+            retrofit.create(Interfaces.NewsService::class.java)
+        service.getNews(lang)
+            .enqueue(object : Callback<MainNewsResponse> {
+                override fun onResponse(
+                    call: Call<MainNewsResponse>,
+                    response: Response<MainNewsResponse>
+                ) {
+                    AllAppData.NewsLoaded = true
+                    AllAppData.News = response.body()!!
+                    if (AllAppData.isAllData())ma.loadFragment(MainPageFragment())
+                }
+
+                override fun onFailure(call: Call<MainNewsResponse>, t: Throwable) {
                     Toast.makeText(
                         ma, t.message,
                         Toast.LENGTH_LONG

@@ -1,11 +1,13 @@
 package com.example.dinfo
 
+import MainNewsResponse
 import com.example.example.MainGeoResponse
 import com.example.example.MainWeatherResponse
 import retrofit2.Call
 import retrofit2.http.*
 
 class Interfaces {
+
     interface CurrencyService {
         @GET("https ://api.exchangeratesapi.io/latest")
         fun data(): Call<String> // Здесь будет класс ответа
@@ -23,5 +25,13 @@ class Interfaces {
         fun getLocation(
             @Query("geocode") data: String
         ): Call<MainGeoResponse>
+    }
+
+    interface NewsService {
+
+        @GET("https://newsapi.org/v2/top-headlines?apiKey=ccbb3cf822804182accd4dc5ed9c6e3d&format=json")
+        fun getNews(
+            @Query("country") data: String
+        ): Call<MainNewsResponse>
     }
 }

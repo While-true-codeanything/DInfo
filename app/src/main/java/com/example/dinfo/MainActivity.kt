@@ -82,6 +82,7 @@ class MainActivity : AppCompatActivity() {
             val gt = DataLoader()
             gt.GetLocation(location?.latitude!!, location?.longitude!!, this@MainActivity)
             gt.GetWeather(location?.latitude!!, location?.longitude!!, this@MainActivity)
+            gt.GetNews("ru", this@MainActivity)
             //Здесь будет получение данных
             //Необходимо добавить диалог на разрешение получения местоположения
 

@@ -1,5 +1,7 @@
 package com.example.dinfo
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +12,13 @@ import com.example.dinfo.WeatherResponse.weathertextandicon.PictureChoser
 import com.example.example.Timeseries
 import kotlinx.android.synthetic.main.date_item.view.*
 import kotlinx.android.synthetic.main.location_item.view.*
+import kotlinx.android.synthetic.main.news_item.view.*
 import kotlinx.android.synthetic.main.weather_item.view.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
 
-class MainAdapter() :
+class MainAdapter(var Main: MainActivity) :
 
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var position2 = -1
@@ -50,16 +53,28 @@ class MainAdapter() :
                     )
                 )
             }
+            3 -> {
+                WeatherHolder(
+                    LayoutInflater.from(parent.context).inflate(
+                        R.layout.news_header,
+                        parent,
+                        false
+                    )
+                )
+            }
             else -> {
-                GeoHolder(
-                    LayoutInflater.from(parent.context)
-                        .inflate(R.layout.weather_item, parent, false)//пока не нужно
+                NewsHolder(
+                    LayoutInflater.from(parent.context).inflate(
+                        R.layout.news_item,
+                        parent,
+                        false
+                    )
                 )
             }
         }
     }
 
-    override fun getItemCount(): Int = 3
+    override fun getItemCount(): Int = 9
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -97,6 +112,18 @@ class MainAdapter() :
                 .plus(" " + curWeatherData!!.data.instant.details.windSpeed + AllAppData.WeatherItem.properties.meta.units.windSpeed)
             holder.ico.setImageResource(PictureChoser().GetIconAndText(curWeatherData.data.next1Hours.summary.symbolCode).PicRes)
         }
+        if (position > 3) {
+            val holder = holder as NewsHolder
+            holder.date.text = AllAppData.News.articles[position - 4].title
+            holder.date.setOnClickListener {
+                Main.startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(AllAppData.News.articles[position - 4].url)
+                    )
+                )
+            }
+        }
     }
 
     inner class DateHolder(root: View) :
@@ -115,5 +142,10 @@ class MainAdapter() :
         val Humidity = root.humidity
         val Speed = root.windspeed
         val ico = root.weathericon
+    }
+
+    inner class NewsHolder(root: View) :
+        RecyclerView.ViewHolder(root) {
+        val date = root.NewsInfo
     }
 }
