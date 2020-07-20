@@ -1,6 +1,7 @@
 package com.example.dinfo
 
 import android.Manifest
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
@@ -16,9 +17,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     fun setAMainPage() {
+        pd.dismiss()
         MainContent.adapter = MainAdapter()
     }
 
+    lateinit var pd: ProgressDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,7 +39,12 @@ class MainActivity : AppCompatActivity() {
             // Здесь будет обработка ошибок
             // Надо добавить проверку на интернет
             return
-        } else loc.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, listener, null)
+        } else {
+            pd= ProgressDialog(this)
+            pd.setMessage("Загрузка данныx!\nПожалуйста подождите")
+            pd.show()
+            loc.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, listener, null)
+        }
         Navigation.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
