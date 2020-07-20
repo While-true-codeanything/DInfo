@@ -4,8 +4,11 @@ import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dinfo.WeatherResponse.weathertextandicon.PictureChoser
+import com.example.dinfo.WeatherResponse.weathertextandicon.WTextAndIcon
 import com.example.example.Timeseries
 import kotlinx.android.synthetic.main.date_item.view.*
 import kotlinx.android.synthetic.main.location_item.view.*
@@ -15,7 +18,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class MainAdapter :
+class MainAdapter (var Main:MainActivity) :
 
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var position2 = -1
@@ -75,7 +78,7 @@ class MainAdapter :
         }
         if (position == 2) {
             var curWeatherData: Timeseries? = null
-            val sdf = SimpleDateFormat("dd hh")
+            val sdf = SimpleDateFormat("dd HH")
             val currentDate = sdf.format(Date())
             for (i in 0..AllAppData.WeatherItem.properties.timeseries.size - 1) {
                 val dtime: String =
@@ -86,12 +89,14 @@ class MainAdapter :
                     AllAppData.WeatherItem.properties.timeseries[i]
             }
             val holder = holder as WeatherHolder
+            PictureChoser().GetIconAndText(curWeatherData!!.data.next1Hours.summary.symbolCode).Wtext
             holder.Temperature.text =
-                curWeatherData!!.data.instant.details.airTemperature.toString() + "°, " + curWeatherData.data.next1Hours.summary.symbolCode
+                curWeatherData!!.data.instant.details.airTemperature.toString() + "°, " + PictureChoser().GetIconAndText(curWeatherData.data.next1Hours.summary.symbolCode).Wtext
             holder.Humidity.text = holder.Humidity.text.toString()
                 .plus(" " + curWeatherData!!.data.instant.details.relativeHumidity + AllAppData.WeatherItem.properties.meta.units.relativeHumidity)
             holder.Speed.text = holder.Speed.text.toString()
                 .plus(" " + curWeatherData!!.data.instant.details.windSpeed + AllAppData.WeatherItem.properties.meta.units.windSpeed)
+            holder.ico.setImageResource(PictureChoser().GetIconAndText(curWeatherData.data.next1Hours.summary.symbolCode).PicRes)
         }
     }
 

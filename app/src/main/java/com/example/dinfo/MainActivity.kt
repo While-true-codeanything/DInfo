@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     fun setAMainPage() {
         pd.dismiss()
-        MainContent.adapter = MainAdapter()
+        MainContent.adapter = MainAdapter(this)
     }
 
     lateinit var pd: ProgressDialog
@@ -63,11 +63,11 @@ class MainActivity : AppCompatActivity() {
 
     private val listener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location?) {
-            /*Toast.makeText(
+            Toast.makeText(
                 this@MainActivity,
                 "Широта:" + location?.latitude.toString() + "\n Долгота:" + location?.longitude.toString(),
                 Toast.LENGTH_LONG
-            ).show()*/
+            ).show()
             val gt = DataLoader()
             gt.GetLocation(location?.latitude!!, location?.longitude!!, this@MainActivity)
             gt.GetWeather(location?.latitude!!, location?.longitude!!, this@MainActivity)

@@ -11,7 +11,7 @@ class Interfaces {
         fun data(): Call<String> // Здесь будет класс ответа
     }
     interface WeatherService {
-        @Headers("User-Agent: DInfo/0.5")
+        @Headers("User-Agent: DInfo/1.1")
         @GET("/weatherapi/locationforecast/2.0/compact?")
         fun getWeather(
             @Query("lat") lat: String,
