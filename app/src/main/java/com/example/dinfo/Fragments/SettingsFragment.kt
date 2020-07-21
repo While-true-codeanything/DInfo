@@ -24,7 +24,7 @@ class SettingsFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         val list=ArrayList<SettingsItem>()
-        list.add(SettingsItem("Погода",Fragment()))
+        list.add(SettingsItem("Погода",WeatherFragment()))
         list.add(SettingsItem("Новости",Fragment()))
         list.add(SettingsItem("Курсы валют",Fragment()))
         list.add(SettingsItem("Напоминания",Fragment()))
