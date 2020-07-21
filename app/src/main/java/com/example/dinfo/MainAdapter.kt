@@ -10,6 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dinfo.WeatherResponse.weathertextandicon.PictureChoser
 import com.example.example.Timeseries
+import kotlinx.android.synthetic.main.currency_item.view.*
 import kotlinx.android.synthetic.main.date_item.view.*
 import kotlinx.android.synthetic.main.location_item.view.*
 import kotlinx.android.synthetic.main.news_item.view.*
@@ -62,19 +63,39 @@ class MainAdapter(var Main: MainActivity) :
                     )
                 )
             }
-            else -> {
-                NewsHolder(
+            9 -> {
+                WeatherHolder(
                     LayoutInflater.from(parent.context).inflate(
-                        R.layout.news_item,
+                        R.layout.currency_header,
                         parent,
                         false
                     )
                 )
             }
+            else -> {
+                if (position2 < 9) {
+                    NewsHolder(
+                        LayoutInflater.from(parent.context).inflate(
+                            R.layout.news_item,
+                            parent,
+                            false
+                        )
+                    )
+                } else {
+                    CurrenciesHolder(
+                        LayoutInflater.from(parent.context).inflate(
+                            R.layout.currency_item,
+                            parent,
+                            false
+                        )
+                    )
+
+                }
+            }
         }
     }
 
-    override fun getItemCount(): Int = 9
+    override fun getItemCount(): Int = 12
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -112,7 +133,7 @@ class MainAdapter(var Main: MainActivity) :
                 .plus(" " + curWeatherData!!.data.instant.details.windSpeed + AllAppData.WeatherItem.properties.meta.units.windSpeed)
             holder.ico.setImageResource(PictureChoser().GetIconAndText(curWeatherData.data.next1Hours.summary.symbolCode).PicRes)
         }
-        if (position > 3) {
+        if (position > 3 && position < 9) {
             val holder = holder as NewsHolder
             holder.date.text = AllAppData.News.articles[position - 4].title
             holder.date.setOnClickListener {
@@ -123,6 +144,13 @@ class MainAdapter(var Main: MainActivity) :
                     )
                 )
             }
+        }
+        if (position > 9) {
+            val holder = holder as CurrenciesHolder
+            holder.info.text =
+                "Курс " + AllAppData.CurrenciesBase.base + " к " + AllAppData.CurrenciesBase.rates.GetBase()[position - 10].name
+            holder.data.text =
+                AllAppData.CurrenciesBase.rates.GetBase()[position - 10].Course.toString()
         }
     }
 
@@ -147,5 +175,11 @@ class MainAdapter(var Main: MainActivity) :
     inner class NewsHolder(root: View) :
         RecyclerView.ViewHolder(root) {
         val date = root.NewsInfo
+    }
+
+    inner class CurrenciesHolder(root: View) :
+        RecyclerView.ViewHolder(root) {
+        val info = root.curinfo
+        val data = root.curdata
     }
 }

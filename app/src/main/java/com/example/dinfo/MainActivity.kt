@@ -5,7 +5,6 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
-import android.icu.text.CaseMap
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -16,7 +15,6 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.main_page.*
 
 class MainActivity : AppCompatActivity() {
     fun loadFragment(fragment: Fragment) {
@@ -83,6 +81,7 @@ class MainActivity : AppCompatActivity() {
             gt.GetLocation(location?.latitude!!, location?.longitude!!, this@MainActivity)
             gt.GetWeather(location?.latitude!!, location?.longitude!!, this@MainActivity)
             gt.GetNews("ru", this@MainActivity)
+            gt.GetCurrenccies("EUR", this@MainActivity)
             //Здесь будет получение данных
             //Необходимо добавить диалог на разрешение получения местоположения
 

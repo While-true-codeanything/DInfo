@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.info_settings.*
-import kotlinx.android.synthetic.main.main_page.*
+import com.example.dinfo.R
 
 class SettingsFragment : Fragment() {
 

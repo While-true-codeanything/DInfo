@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/circle"
             android:gravity="center"
-            android:textColor="@android:color/holo_red_light"
-            android:text="222" />
+            android:text="222"
+            android:textColor="@android:color/holo_orange_light" />
     </LinearLayout>
 </LinearLayout>

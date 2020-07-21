@@ -1,6 +1,7 @@
 package com.example.dinfo
 
 
+import MainCurrencyResponse
 import MainNewsResponse
 import android.widget.Toast
 import com.example.example.MainGeoResponse
@@ -55,7 +56,7 @@ class DataLoader {
                 ) {
                     AllAppData.WeatherLoaded = true
                     AllAppData.WeatherItem = response.body()!!
-                    if (AllAppData.isAllData())ma.loadFragment(MainPageFragment())
+                    if (AllAppData.isAllData()) ma.loadFragment(MainPageFragment())
                 }
 
                 override fun onFailure(call: Call<MainWeatherResponse>, t: Throwable) {
@@ -66,10 +67,11 @@ class DataLoader {
                 }
             })
     }
+
     fun GetNews(lang: String, ma: MainActivity) {
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://newsapi.org")
+            .baseUrl("https://newsapi.org")
             .build()
         val service: Interfaces.NewsService =
             retrofit.create(Interfaces.NewsService::class.java)
@@ -81,10 +83,36 @@ class DataLoader {
                 ) {
                     AllAppData.NewsLoaded = true
                     AllAppData.News = response.body()!!
-                    if (AllAppData.isAllData())ma.loadFragment(MainPageFragment())
+                    if (AllAppData.isAllData()) ma.loadFragment(MainPageFragment())
                 }
 
                 override fun onFailure(call: Call<MainNewsResponse>, t: Throwable) {
+                    Toast.makeText(
+                        ma, t.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
+    }
+    fun GetCurrenccies(lang: String, ma: MainActivity) {
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://api.exchangeratesapi.io")
+            .build()
+        val service: Interfaces.CurrenciesService =
+            retrofit.create(Interfaces.CurrenciesService::class.java)
+        service.getCurrencies(lang)
+            .enqueue(object : Callback<MainCurrencyResponse> {
+                override fun onResponse(
+                    call: Call<MainCurrencyResponse>,
+                    response: Response<MainCurrencyResponse>
+                ) {
+                    AllAppData.CurrenciesLoaded= true
+                    AllAppData.CurrenciesBase = response.body()!!
+                    if (AllAppData.isAllData()) ma.loadFragment(MainPageFragment())
+                }
+
+                override fun onFailure(call: Call<MainCurrencyResponse>, t: Throwable) {
                     Toast.makeText(
                         ma, t.message,
                         Toast.LENGTH_LONG
