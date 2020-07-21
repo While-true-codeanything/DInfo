@@ -4,6 +4,7 @@ package com.example.dinfo
 import MainCurrencyResponse
 import MainNewsResponse
 import android.widget.Toast
+import com.example.dinfo.Fragments.MainPageFragment
 import com.example.example.MainGeoResponse
 import com.example.example.MainWeatherResponse
 import retrofit2.Call
