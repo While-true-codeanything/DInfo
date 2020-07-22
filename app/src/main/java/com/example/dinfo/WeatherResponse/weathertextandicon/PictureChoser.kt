@@ -18,13 +18,13 @@ class PictureChoser {
                 WTextAndIcon("Облачно", R.drawable.cloudy)
             }
             "fair_day" -> {
-                WTextAndIcon("Слабая обласность", R.drawable.fair_day)
+                WTextAndIcon("Слабая облачность", R.drawable.fair_day)
             }
             "fair_night" -> {
-                WTextAndIcon("Слабая обласность", R.drawable.fair_night)
+                WTextAndIcon("Слабая облачность", R.drawable.fair_night)
             }
             "fair_polartwilight" -> {
-                WTextAndIcon("Слабая обласность", R.drawable.fair_polartwilight)
+                WTextAndIcon("Слабая облачность", R.drawable.fair_polartwilight)
             }
             "fog" -> {
                 WTextAndIcon("Туман", R.drawable.fog)
@@ -51,10 +51,7 @@ class PictureChoser {
                 WTextAndIcon("Сильный дождь с грозой", R.drawable.heavyrainshowersandthunder_night)
             }
             "heavyrainshowersandthunder_polartwilight" -> {
-                WTextAndIcon(
-                    "Сильный дождь с грозой",
-                    R.drawable.heavyrainshowersandthunder_polartwilight
-                )
+                WTextAndIcon("Сильный дождь с грозой", R.drawable.heavyrainshowersandthunder_polartwilight)
             }
             "heavysleet" -> {
                 WTextAndIcon("Мокрый снег с дождем", R.drawable.heavysleet)
