@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ntheadrem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Напоминание о том самом"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/remove"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/close" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/ntbodyrem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=">Привет! Меня зовут Павлов Егор, я ученик ЛИТа, если вы нашли какие-либо ошибки в работе приложения(вылеты, неправильное отображение), то вы можете написать мне на почту: \npavlov.egor@lit1533.ru" />
+
+    <TextView
+        android:id="@+id/fromdtrem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Дата добавленя:23_07_2020" />
+
+    <TextView
+        android:id="@+id/todtrem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Напоминание на:23_07_2020" />
+
+</LinearLayout>

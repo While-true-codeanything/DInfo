@@ -1,6 +1,7 @@
 package com.example.dinfo
 
 import android.Manifest
+import android.app.Notification
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.pm.ActivityInfo
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment
 import com.example.dinfo.Fragments.AppSettingsFragment
 import com.example.dinfo.Fragments.MainPageFragment
 import com.example.dinfo.Fragments.SettingsFragment
+import com.example.dinfo.Notifications.NotificationObject
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -34,10 +36,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         if(MemoryAccesser(this).CheckIfFirstStart()){
-            var a = ArrayList<CurrencydateItem>()
+            val a = ArrayList<CurrencydateItem>()
             a.add((CurrencydateItem("EUR", "RUB")))
             a.add((CurrencydateItem("USD", "RUB")))
-            MemoryAccesser(this).setCur(a)
+            val b = ArrayList<NotificationObject>()
+            b.add(NotificationObject("Об этом","ф\nи\nг\nн\nя","23-07-2020","22-07-2020"))
+            b.add(NotificationObject("Об том",">Привет! Меня зовут Павлов Егор, я ученик ЛИТа, если вы нашли какие-либо ошибки в работе приложения(вылеты, неправильное отображение), то вы можете написать мне на почту: \\npavlov.egor@lit1533.ru","23-07-2020","22-07-2020"))
+            val v =MemoryAccesser(this)
+            v.setCur(a)
+            v.setSettings("5",MemoryAccesser.NewsNum)
+            v.setNotifications(b)
         }
         var loc: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         if (ActivityCompat.checkSelfPermission(

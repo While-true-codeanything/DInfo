@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/ntbody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=">Привет! Меня зовут Павлов Егор, я ученик ЛИТа, если вы нашли какие-либо ошибки в работе приложения(вылеты, неправильное отображение), то вы можете написать мне на почту: \npavlov.egor@lit1533.ru"
@@ -14,11 +14,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/nthead"
         app:layout_constraintVertical_bias="0.026" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/nthead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Напоминание о том самом"
@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.018" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/fromdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Дата добавленя:23_07_2020"
@@ -40,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.928"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/ntbody"
         app:layout_constraintVertical_bias="0.021" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

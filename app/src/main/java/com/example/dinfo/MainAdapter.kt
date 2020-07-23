@@ -1,5 +1,6 @@
 package com.example.dinfo
 
+import android.app.Notification
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -8,12 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dinfo.Notifications.NotificationObject
 import com.example.dinfo.WeatherResponse.weathertextandicon.PictureChoser
 import com.example.example.Timeseries
 import kotlinx.android.synthetic.main.currency_item.view.*
 import kotlinx.android.synthetic.main.date_item.view.*
 import kotlinx.android.synthetic.main.location_item.view.*
 import kotlinx.android.synthetic.main.news_item.view.*
+import kotlinx.android.synthetic.main.notifications_item.view.*
 import kotlinx.android.synthetic.main.weather_item.view.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -22,11 +25,15 @@ import java.util.*
 class MainAdapter(var Main: MainActivity) :
 
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var position2 = -1
     var CurData: ArrayList<CurrencydateItem>
-
+    var ColNot:Int
+    var NotData: ArrayList<NotificationObject>
     init {
-        CurData = MemoryAccesser(Main).getCur()
+        var a=MemoryAccesser(Main)
+        ColNot =a.getSettings(MemoryAccesser.NewsNum).toInt()
+        CurData =a.getCur()
+        NotData=a.getNotifications()
+
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -34,9 +41,11 @@ class MainAdapter(var Main: MainActivity) :
         if (position == 1) return 1
         if (position == 2) return 2
         if (position == 3) return 3
-        if (position == 9) return 4
-        if (position > 9) return 5
-        if (position < 9 && position > 3) return 6
+        if (position > 3 && position < 4+ColNot) return 4
+        if (position == 4+ColNot) return 5
+        if (position > 4+ColNot &&position < 5+ColNot+CurData.size) return 6
+        if (position == 5+ColNot+CurData.size) return 7
+        if (position > 5+ColNot+CurData.size) return 8
         return 99
     }
 
@@ -79,6 +88,15 @@ class MainAdapter(var Main: MainActivity) :
                 )
             }
             4 -> {
+                NewsHolder(
+                    LayoutInflater.from(parent.context).inflate(
+                        R.layout.news_item,
+                        parent,
+                        false
+                    )
+                )
+            }
+            5 -> {
                 WeatherHolder(
                     LayoutInflater.from(parent.context).inflate(
                         R.layout.currency_header,
@@ -87,19 +105,37 @@ class MainAdapter(var Main: MainActivity) :
                     )
                 )
             }
-            else -> {
-                if (viewType == 6) {
-                    NewsHolder(
-                        LayoutInflater.from(parent.context).inflate(
-                            R.layout.news_item,
-                            parent,
-                            false
-                        )
+            6 -> {
+                CurrenciesHolder(
+                    LayoutInflater.from(parent.context).inflate(
+                        R.layout.currency_item,
+                        parent,
+                        false
                     )
-                } else {
+                )
+            }
+            7 -> {
+                WeatherHolder(
+                    LayoutInflater.from(parent.context).inflate(
+                        R.layout.notification_header,
+                        parent,
+                        false
+                    )
+                )
+            }
+            8 -> {
+                NotificationHolder(
+                    LayoutInflater.from(parent.context).inflate(
+                        R.layout.notifications_item,
+                        parent,
+                        false
+                    )
+                )
+            }
+            else -> {
                     CurrenciesHolder(
                         LayoutInflater.from(parent.context).inflate(
-                            R.layout.currency_item,
+                            R.layout.currency_header,
                             parent,
                             false
                         )
@@ -108,9 +144,8 @@ class MainAdapter(var Main: MainActivity) :
                 }
             }
         }
-    }
 
-    override fun getItemCount(): Int = 10 + CurData.size
+    override fun getItemCount(): Int = 6+ColNot + CurData.size+NotData.size
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -148,7 +183,7 @@ class MainAdapter(var Main: MainActivity) :
                 .plus(" " + curWeatherData!!.data.instant.details.windSpeed + AllAppData.WeatherItem.properties.meta.units.windSpeed)
             holder.ico.setImageResource(PictureChoser().GetIconAndText(curWeatherData.data.next1Hours.summary.symbolCode).PicRes)
         }
-        if (position > 3 && position < 9) {
+        if (position > 3 && position < 4+ColNot) {
             val holder = holder as NewsHolder
             holder.date.text = AllAppData.News.articles[position - 4].title
             holder.date.setOnClickListener {
@@ -160,25 +195,31 @@ class MainAdapter(var Main: MainActivity) :
                 )
             }
         }
-        if (position > 9) {
+        if (position > 4+ColNot &&position < 5+ColNot+CurData.size) {
             val holder = holder as CurrenciesHolder
             holder.info.text =
-                "Курс " + CurData[position - 10].frm + " к " + CurData[position - 10].to
+                "Курс " + CurData[position - (5+ColNot)].frm + " к " + CurData[position - (5+ColNot)].to
             var a = Main.resources.getStringArray(R.array.cur)
             var fr: Double = 1.0
             var to: Double = 1.0
             for (i in 0..a.size - 1) {
-                if (a[i] == CurData[position - 10].frm) {
+                if (a[i] == CurData[position - (5+ColNot)].frm) {
                     if (i == a.size - 1) fr = 1.0
                     else fr = AllAppData.CurrenciesBase.rates.GetBase()[i].Course
                 }
-                if (a[i] == CurData[position - 10].to) {
+                if (a[i] == CurData[position - (5+ColNot)].to) {
                     if (i == a.size - 1) to = 1.0
                     else to = AllAppData.CurrenciesBase.rates.GetBase()[i].Course
                 }
             }
             holder.data.text =
                 String.format("%.2f", ((1 / fr) / (1 / to)))
+        }
+        if (position > 5+ColNot+CurData.size) {
+            val holder = holder as NotificationHolder
+            holder.body.text=NotData[position-(6+ColNot+CurData.size)].body
+            holder.head.text=NotData[position-(6+ColNot+CurData.size)].head
+            holder.fromdt.text=NotData[position-(6+ColNot+CurData.size)].datefrom
         }
     }
 
@@ -209,5 +250,11 @@ class MainAdapter(var Main: MainActivity) :
         RecyclerView.ViewHolder(root) {
         val info = root.curinfo
         val data = root.curdata
+    }
+    inner class NotificationHolder(root: View) :
+        RecyclerView.ViewHolder(root) {
+        val head = root.nthead
+        val body = root.ntbody
+        val fromdt = root.fromdt
     }
 }

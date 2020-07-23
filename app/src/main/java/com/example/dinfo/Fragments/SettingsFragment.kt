@@ -27,7 +27,7 @@ class SettingsFragment : Fragment() {
         list.add(SettingsItem("Погода",WeatherFragment()))
         list.add(SettingsItem("Новости",Fragment()))
         list.add(SettingsItem("Курсы валют",CurrenciesFragment()))
-        list.add(SettingsItem("Напоминания",Fragment()))
+        list.add(SettingsItem("Напоминания",NotificationFragment()))
        this.activity!!.con.adapter =SettingsAdapter(list,activity as MainActivity)
     }
 
