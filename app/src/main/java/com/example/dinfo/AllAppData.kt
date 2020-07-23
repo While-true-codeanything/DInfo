@@ -13,7 +13,6 @@ class AllAppData {
         var NewsLoaded:Boolean=false
         var CurrenciesLoaded:Boolean=false
         lateinit var GeoPosition:String
-        /*lateinit var CurData: ArrayList<CurrencydateItem>*/
         lateinit var WeatherItem:MainWeatherResponse
         lateinit var News:MainNewsResponse
         lateinit var CurrenciesBase:MainCurrencyResponse
