@@ -23,6 +23,7 @@ class MainPageFragment : Fragment() {
         super.onStart()
         this.activity!!.MainContent.adapter =
             MainAdapter(activity as MainActivity)
+        if(this.activity!!.MainContent.adapter!=null) this.activity!!.MainContent.adapter?.notifyDataSetChanged()
     }
 
 }

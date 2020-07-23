@@ -27,11 +27,18 @@ class MainActivity : AppCompatActivity() {
         ft.replace(R.id.Place, fragment)
         ft.commit()
     }
+
     lateinit var pd: ProgressDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        if(MemoryAccesser(this).CheckIfFirstStart()){
+            var a = ArrayList<CurrencydateItem>()
+            a.add((CurrencydateItem("EUR", "RUB")))
+            a.add((CurrencydateItem("USD", "RUB")))
+            MemoryAccesser(this).setCur(a)
+        }
         var loc: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -49,22 +56,24 @@ class MainActivity : AppCompatActivity() {
             pd = ProgressDialog(this)
             pd.setMessage("Загрузка данныx!\nПожалуйста подождите")
             pd.show()
-            loc.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, listener, null)
+            if (MemoryAccesser(this).getSettings(MemoryAccesser.GeoProvider) == "Network") {
+                loc.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, listener, null)
+            } else loc.requestSingleUpdate(LocationManager.GPS_PROVIDER, listener, null)
         }
         Navigation.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
-                    title="DInfo"
+                    title = "DInfo"
                     loadFragment(MainPageFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_viewsettings -> {
-                    title="Info Settings"
+                    title = "Info Settings"
                     loadFragment(SettingsFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_settings -> {
-                    title="App Settings"
+                    title = "App Settings"
                     loadFragment(AppSettingsFragment())
                     return@OnNavigationItemSelectedListener true
                 }

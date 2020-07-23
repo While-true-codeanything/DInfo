@@ -201,6 +201,7 @@ data class Rates(
         Base.add(getGBP())
         Base.add(getKRW())
         Base.add(getMYR())
+        Base.add(ConverterRow("EUR",1.0))
         return Base
     }
 

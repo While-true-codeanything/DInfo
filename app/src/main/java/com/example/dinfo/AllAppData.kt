@@ -4,6 +4,7 @@ import MainCurrencyResponse
 import MainNewsResponse
 import com.example.example.MainWeatherResponse
 import java.util.*
+import kotlin.collections.ArrayList
 
 class AllAppData {
     companion object{
@@ -12,6 +13,7 @@ class AllAppData {
         var NewsLoaded:Boolean=false
         var CurrenciesLoaded:Boolean=false
         lateinit var GeoPosition:String
+        /*lateinit var CurData: ArrayList<CurrencydateItem>*/
         lateinit var WeatherItem:MainWeatherResponse
         lateinit var News:MainNewsResponse
         lateinit var CurrenciesBase:MainCurrencyResponse

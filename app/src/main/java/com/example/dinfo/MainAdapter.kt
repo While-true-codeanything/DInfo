@@ -23,10 +23,25 @@ class MainAdapter(var Main: MainActivity) :
 
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var position2 = -1
+    var CurData: ArrayList<CurrencydateItem>
+
+    init {
+        CurData = MemoryAccesser(Main).getCur()
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        if (position == 0) return 0
+        if (position == 1) return 1
+        if (position == 2) return 2
+        if (position == 3) return 3
+        if (position == 9) return 4
+        if (position > 9) return 5
+        if (position < 9 && position > 3) return 6
+        return 99
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        position2++
-        return when (position2) {
+        return when (viewType) {
             0 -> {
                 DateHolder(
                     LayoutInflater.from(parent.context).inflate(
@@ -63,7 +78,7 @@ class MainAdapter(var Main: MainActivity) :
                     )
                 )
             }
-            9 -> {
+            4 -> {
                 WeatherHolder(
                     LayoutInflater.from(parent.context).inflate(
                         R.layout.currency_header,
@@ -73,7 +88,7 @@ class MainAdapter(var Main: MainActivity) :
                 )
             }
             else -> {
-                if (position2 < 9) {
+                if (viewType == 6) {
                     NewsHolder(
                         LayoutInflater.from(parent.context).inflate(
                             R.layout.news_item,
@@ -95,7 +110,7 @@ class MainAdapter(var Main: MainActivity) :
         }
     }
 
-    override fun getItemCount(): Int = 12
+    override fun getItemCount(): Int = 10 + CurData.size
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -148,9 +163,22 @@ class MainAdapter(var Main: MainActivity) :
         if (position > 9) {
             val holder = holder as CurrenciesHolder
             holder.info.text =
-                "Курс " + AllAppData.CurrenciesBase.base + " к " + AllAppData.CurrenciesBase.rates.GetBase()[position - 10].name
+                "Курс " + CurData[position - 10].frm + " к " + CurData[position - 10].to
+            var a = Main.resources.getStringArray(R.array.cur)
+            var fr: Double = 1.0
+            var to: Double = 1.0
+            for (i in 0..a.size - 1) {
+                if (a[i] == CurData[position - 10].frm) {
+                    if (i == a.size - 1) fr = 1.0
+                    else fr = AllAppData.CurrenciesBase.rates.GetBase()[i].Course
+                }
+                if (a[i] == CurData[position - 10].to) {
+                    if (i == a.size - 1) to = 1.0
+                    else to = AllAppData.CurrenciesBase.rates.GetBase()[i].Course
+                }
+            }
             holder.data.text =
-                AllAppData.CurrenciesBase.rates.GetBase()[position - 10].Course.toString()
+                String.format("%.2f", ((1 / fr) / (1 / to)))
         }
     }
 
