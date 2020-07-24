@@ -6,12 +6,11 @@
 
     <Button
         android:id="@+id/NewsInfo"
-        android:padding="5dp"
-        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:background="@drawable/corner"
-        android:textSize="13sp"
         android:gravity="center_vertical"
-        android:text="Заголовок новости" />
+        android:padding="5dp"
+        android:textSize="13sp" />
 </LinearLayout>

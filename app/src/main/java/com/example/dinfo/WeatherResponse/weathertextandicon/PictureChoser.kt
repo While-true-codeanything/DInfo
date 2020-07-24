@@ -51,7 +51,10 @@ class PictureChoser {
                 WTextAndIcon("Сильный дождь с грозой", R.drawable.heavyrainshowersandthunder_night)
             }
             "heavyrainshowersandthunder_polartwilight" -> {
-                WTextAndIcon("Сильный дождь с грозой", R.drawable.heavyrainshowersandthunder_polartwilight)
+                WTextAndIcon(
+                    "Сильный дождь с грозой",
+                    R.drawable.heavyrainshowersandthunder_polartwilight
+                )
             }
             "heavysleet" -> {
                 WTextAndIcon("Мокрый снег с дождем", R.drawable.heavysleet)

@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,18 +19,23 @@
             android:gravity="center"
             android:inputType="number"
             android:maxLength="2"
+            android:textColor="@color/colorPrimary"
+            android:textSize="23sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.162"
+            app:layout_constraintEnd_toStartOf="@+id/setcurnum"
             app:layout_constraintStart_toEndOf="@+id/textnuminfo"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.625" />
 
         <TextView
             android:id="@+id/textnuminfo"
-            android:layout_width="144dp"
-            android:layout_height="47dp"
-            android:text="Количество курсов на главной странице"
+            android:layout_width="155dp"
+            android:layout_height="50dp"
+            android:background="@drawable/backdraw"
+            android:padding="5dp"
+            android:paddingLeft="7dp"
+            android:text="@string/colcr"
+            android:textColor="@color/design_default_color_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.003"
@@ -41,7 +47,9 @@
             android:id="@+id/setcurnum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Установить"
+            android:background="@drawable/back"
+            android:padding="5dp"
+            android:text="@string/BSet"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -66,7 +74,8 @@
             android:id="@+id/Applycur"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Применить" />
+            android:background="@drawable/back"
+            android:text="@string/Apply" />
 
     </LinearLayout>
 

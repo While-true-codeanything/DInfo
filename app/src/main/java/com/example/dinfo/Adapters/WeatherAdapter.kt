@@ -1,9 +1,11 @@
-package com.example.dinfo
+package com.example.dinfo.Adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dinfo.DtClassesAndOth.AllAppData
+import com.example.dinfo.R
 import com.example.dinfo.WeatherResponse.weathertextandicon.PictureChoser
 import com.example.example.Timeseries
 import kotlinx.android.synthetic.main.news_header.view.*
@@ -23,7 +25,7 @@ class WeatherAdapter(var Weatherlist: ArrayList<Timeseries>) :
     override fun getItemCount(): Int = Weatherlist.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val holder = holder as WeatherAdapter.WeatherHolder
+        val holder = holder as WeatherHolder
         PictureChoser().GetIconAndText(Weatherlist[position].data.next1Hours.summary.symbolCode).Wtext
         holder.Temperature.text =
             Weatherlist[position].data.instant.details.airTemperature.toString() + "°, " + PictureChoser().GetIconAndText(

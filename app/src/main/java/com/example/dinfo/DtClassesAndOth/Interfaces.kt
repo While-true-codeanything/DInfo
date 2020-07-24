@@ -1,7 +1,8 @@
-package com.example.dinfo
+package com.example.dinfo.DtClassesAndOth
 
 import MainCurrencyResponse
 import MainNewsResponse
+import com.example.dinfo.HolidayResponse.MainHolidayResponse
 import com.example.example.MainGeoResponse
 import com.example.example.MainWeatherResponse
 import retrofit2.Call
@@ -44,5 +45,13 @@ class Interfaces {
         fun getCurrencies(
             @Query("base") data: String
         ): Call<MainCurrencyResponse>
+    }
+    interface HolidayService {
+        @GET("/v1/holidays?pretty&key=083159db-d8fe-4c31-a1a8-08df7d391da3&year=2019&language=ru")
+        fun getHoliday(
+            @Query("country") data: String,
+            @Query("month") month: Int,
+            @Query("day") day: Int
+        ): Call<MainHolidayResponse>
     }
 }

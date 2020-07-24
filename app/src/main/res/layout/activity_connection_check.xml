@@ -9,13 +9,24 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@drawable/back"
         android:gravity="center"
         android:padding="5dp"
         android:text="@string/restart_app"
+        tools:visibility="gone" />
+
+    <Button
+        android:id="@+id/tosettings"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:background="@drawable/back"
+        android:padding="5dp"
+        android:text="@string/toSet"
         tools:visibility="gone" />
 
 </LinearLayout>

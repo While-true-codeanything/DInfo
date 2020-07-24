@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@color/cardview_dark_background"
-        android:text="Источник информации" />
+        android:text="@string/source" />
 
     <RadioGroup
         android:layout_width="167dp"
@@ -36,7 +36,7 @@
         android:background="@drawable/setback"
         android:padding="5dp"
         android:textColor="@color/cardview_dark_background"
-        android:text="Полные погодные данные на сегодня" />
+        android:text="@string/fullweatherdata" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/weather_rec"

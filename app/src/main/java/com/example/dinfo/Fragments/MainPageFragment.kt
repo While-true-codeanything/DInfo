@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.dinfo.MainActivity
-import com.example.dinfo.MainAdapter
+import com.example.dinfo.Activities.MainActivity
+import com.example.dinfo.Adapters.MainAdapter
 import com.example.dinfo.R
 import kotlinx.android.synthetic.main.main_page.*
 
@@ -23,7 +23,7 @@ class MainPageFragment : Fragment() {
         super.onStart()
         this.activity!!.MainContent.adapter =
             MainAdapter(activity as MainActivity)
-        if(this.activity!!.MainContent.adapter!=null) this.activity!!.MainContent.adapter?.notifyDataSetChanged()
+        if (this.activity!!.MainContent.adapter != null) this.activity!!.MainContent.adapter?.notifyDataSetChanged()
     }
 
 }

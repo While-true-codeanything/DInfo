@@ -1,10 +1,12 @@
-package com.example.dinfo
+package com.example.dinfo.DtClassesAndOth
 
 
 import MainCurrencyResponse
 import MainNewsResponse
 import android.widget.Toast
+import com.example.dinfo.Activities.MainActivity
 import com.example.dinfo.Fragments.MainPageFragment
+import com.example.dinfo.HolidayResponse.MainHolidayResponse
 import com.example.example.MainGeoResponse
 import com.example.example.MainWeatherResponse
 import retrofit2.Call
@@ -12,6 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 
 class DataLoader {
@@ -95,6 +98,7 @@ class DataLoader {
                 }
             })
     }
+
     fun GetCurrenccies(lang: String, ma: MainActivity) {
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -108,12 +112,38 @@ class DataLoader {
                     call: Call<MainCurrencyResponse>,
                     response: Response<MainCurrencyResponse>
                 ) {
-                    AllAppData.CurrenciesLoaded= true
+                    AllAppData.CurrenciesLoaded = true
                     AllAppData.CurrenciesBase = response.body()!!
                     if (AllAppData.isAllData()) ma.loadFragment(MainPageFragment())
                 }
 
                 override fun onFailure(call: Call<MainCurrencyResponse>, t: Throwable) {
+                    Toast.makeText(
+                        ma, t.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
+    }
+    fun GetHoliday(ma: MainActivity) {
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://holidayapi.com")
+            .build()
+        val service: Interfaces.HolidayService =
+            retrofit.create(Interfaces.HolidayService::class.java)
+        service.getHoliday("ru",Calendar.getInstance()[Calendar.MONTH]+1,Calendar.getInstance()[Calendar.DAY_OF_MONTH])
+            .enqueue(object : Callback<MainHolidayResponse> {
+                override fun onResponse(
+                    call: Call<MainHolidayResponse>,
+                    response: Response<MainHolidayResponse>
+                ) {
+                    AllAppData.HolidayLoaded = true
+                    AllAppData.Holidays = response.body()!!.holidays
+                    if (AllAppData.isAllData()) ma.loadFragment(MainPageFragment())
+                }
+
+                override fun onFailure(call: Call<MainHolidayResponse>, t: Throwable) {
                     Toast.makeText(
                         ma, t.message,
                         Toast.LENGTH_LONG

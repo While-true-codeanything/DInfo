@@ -1,15 +1,14 @@
 package com.example.dinfo.Fragments
 
-import android.media.audiofx.Equalizer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.dinfo.MainActivity
+import com.example.dinfo.Activities.MainActivity
 import com.example.dinfo.R
-import com.example.dinfo.SettingsAdapter
-import com.example.dinfo.SettingsItem
+import com.example.dinfo.Adapters.SettingsAdapter
+import com.example.dinfo.DtClassesAndOth.SettingsItem
 import kotlinx.android.synthetic.main.settings_page.*
 
 class SettingsFragment : Fragment() {
@@ -23,12 +22,35 @@ class SettingsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val list=ArrayList<SettingsItem>()
-        list.add(SettingsItem("Погода",WeatherFragment()))
-        list.add(SettingsItem("Новости",NewsFragment()))
-        list.add(SettingsItem("Курсы валют",CurrenciesFragment()))
-        list.add(SettingsItem("Напоминания",NotificationFragment()))
-       this.activity!!.con.adapter =SettingsAdapter(list,activity as MainActivity)
+        val list = ArrayList<SettingsItem>()
+        list.add(
+            SettingsItem(
+                "Погода",
+                WeatherFragment()
+            )
+        )
+        list.add(
+            SettingsItem(
+                "Новости",
+                NewsFragment()
+            )
+        )
+        list.add(
+            SettingsItem(
+                "Курсы валют",
+                CurrenciesFragment()
+            )
+        )
+        list.add(
+            SettingsItem(
+                "Напоминания",
+                NotificationFragment()
+            )
+        )
+        this.activity!!.con.adapter = SettingsAdapter(
+            list,
+            activity as MainActivity
+        )
     }
 
 }

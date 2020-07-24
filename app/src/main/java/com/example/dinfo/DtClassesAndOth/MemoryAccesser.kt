@@ -1,4 +1,4 @@
-package com.example.dinfo
+package com.example.dinfo.DtClassesAndOth
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -50,14 +50,18 @@ class MemoryAccesser(ct: Context) {
     fun getNotifications(): ArrayList<NotificationObject> {
         val editor: SharedPreferences.Editor = accesser.edit()
         val ret = accesser.getStringSet(NotList, HashSet<String>())
-        val list = ArrayList<NotificationObject>() //your NotificationObject
+        val list = ArrayList<NotificationObject>() 
         for (str in ret!!) {
             list.add(NotificationObject.fromString(str))
         }
         return list
     }
+    fun DeleteAll() {
+        val editor: SharedPreferences.Editor = accesser.edit()
+        editor.clear()
+    }
 
-    fun setCur(data: ArrayList<CurrencydateItem>) { //your NotificationObject
+    fun setCur(data: ArrayList<CurrencydateItem>) {
         val editor: SharedPreferences.Editor = accesser.edit()
         val list: MutableSet<String> = HashSet()
         for (i in 0..data.size - 1) {
@@ -73,10 +77,10 @@ class MemoryAccesser(ct: Context) {
         editor.remove(key)
     }
 
-    fun getCur(): ArrayList<CurrencydateItem> { //your NotificationObject
+    fun getCur(): ArrayList<CurrencydateItem> {
         val editor: SharedPreferences.Editor = accesser.edit()
         val ret = accesser.getStringSet(Cur, HashSet<String>())
-        val list = ArrayList<CurrencydateItem>() //your NotificationObject
+        val list = ArrayList<CurrencydateItem>()
         for (str in ret!!) {
             Log.i("Строка: ", CurrencydateItem.fromString(str).toString())
             list.add(CurrencydateItem.fromString(str)) // list.add(YourObjectClass.createfromstring())
@@ -98,7 +102,9 @@ class MemoryAccesser(ct: Context) {
 
     fun CheckIfFirstStart(): Boolean {
         if (!accesser.contains(GeoProvider)) {
-            setSettings("Network", GeoProvider)
+            setSettings("Network",
+                GeoProvider
+            )
             return true
         }
         return false

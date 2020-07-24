@@ -35,135 +35,134 @@ data class Rates(
     @SerializedName("GBP") val gBP: Double,
     @SerializedName("KRW") val kRW: Double,
     @SerializedName("MYR") val mYR: Double
-){
-        fun getCAD(): ConverterRow {
-            return ConverterRow("CAD", cAD)
-        }
+) {
+    fun getCAD(): ConverterRow {
+        return ConverterRow("CAD", cAD)
+    }
 
-        fun getHKD(): ConverterRow {
-            return ConverterRow("HKD", hKD)
-        }
+    fun getHKD(): ConverterRow {
+        return ConverterRow("HKD", hKD)
+    }
 
-        fun getISK(): ConverterRow {
-            return ConverterRow("ISK", iSK)
-        }
+    fun getISK(): ConverterRow {
+        return ConverterRow("ISK", iSK)
+    }
 
-        fun getPHP(): ConverterRow {
-            return ConverterRow("PHP", pHP)
-        }
+    fun getPHP(): ConverterRow {
+        return ConverterRow("PHP", pHP)
+    }
 
-        fun getDKK(): ConverterRow {
-            return ConverterRow("DKK", dKK)
-        }
+    fun getDKK(): ConverterRow {
+        return ConverterRow("DKK", dKK)
+    }
 
-        fun getHUF(): ConverterRow {
-            return ConverterRow("HUF", hUF)
-        }
+    fun getHUF(): ConverterRow {
+        return ConverterRow("HUF", hUF)
+    }
 
-        fun getCZK(): ConverterRow {
-            return ConverterRow("CZK", cZK)
-        }
+    fun getCZK(): ConverterRow {
+        return ConverterRow("CZK", cZK)
+    }
 
-        fun getAUD(): ConverterRow {
-            return ConverterRow("AUD", aUD)
-        }
+    fun getAUD(): ConverterRow {
+        return ConverterRow("AUD", aUD)
+    }
 
-        fun getRON(): ConverterRow {
-            return ConverterRow("RON", rON)
-        }
+    fun getRON(): ConverterRow {
+        return ConverterRow("RON", rON)
+    }
 
-        fun getSEK(): ConverterRow {
-            return ConverterRow("SEK", sEK)
-        }
+    fun getSEK(): ConverterRow {
+        return ConverterRow("SEK", sEK)
+    }
 
-        fun getIDR(): ConverterRow {
-            return ConverterRow("IDR", iDR)
-        }
+    fun getIDR(): ConverterRow {
+        return ConverterRow("IDR", iDR)
+    }
 
-        fun getINR(): ConverterRow {
-            return ConverterRow("INR", iNR)
-        }
+    fun getINR(): ConverterRow {
+        return ConverterRow("INR", iNR)
+    }
 
-        fun getBRL(): ConverterRow {
-            return ConverterRow("BRL", bRL)
-        }
+    fun getBRL(): ConverterRow {
+        return ConverterRow("BRL", bRL)
+    }
 
-        fun getRUB(): ConverterRow {
-            return ConverterRow("RUB", rUB)
-        }
+    fun getRUB(): ConverterRow {
+        return ConverterRow("RUB", rUB)
+    }
 
-        fun getHRK(): ConverterRow {
-            return ConverterRow("HRK", hRK)
-        }
+    fun getHRK(): ConverterRow {
+        return ConverterRow("HRK", hRK)
+    }
 
-        fun getJPY(): ConverterRow {
-            return ConverterRow("JPY", jPY)
-        }
+    fun getJPY(): ConverterRow {
+        return ConverterRow("JPY", jPY)
+    }
 
-        fun getTHB(): ConverterRow {
-            return ConverterRow("THB", tHB)
-        }
+    fun getTHB(): ConverterRow {
+        return ConverterRow("THB", tHB)
+    }
 
-        fun getCHF(): ConverterRow {
-            return ConverterRow("CHF", cHF)
-        }
+    fun getCHF(): ConverterRow {
+        return ConverterRow("CHF", cHF)
+    }
 
-        fun getSGD(): ConverterRow {
-            return ConverterRow("SGD", sGD)
-        }
+    fun getSGD(): ConverterRow {
+        return ConverterRow("SGD", sGD)
+    }
 
-        fun getPLN(): ConverterRow {
-            return ConverterRow("PLN", pLN)
-        }
+    fun getPLN(): ConverterRow {
+        return ConverterRow("PLN", pLN)
+    }
 
-        fun getBGN(): ConverterRow {
-            return ConverterRow("BGN", bGN)
-        }
+    fun getBGN(): ConverterRow {
+        return ConverterRow("BGN", bGN)
+    }
 
-        fun getTRY(): ConverterRow {
-            return ConverterRow("TRY", tRY)
-        }
+    fun getTRY(): ConverterRow {
+        return ConverterRow("TRY", tRY)
+    }
 
-        fun getCNY(): ConverterRow {
-            return ConverterRow("CNY", cNY)
-        }
+    fun getCNY(): ConverterRow {
+        return ConverterRow("CNY", cNY)
+    }
 
-        fun getNOK(): ConverterRow {
-            return ConverterRow("NOK", nOK)
-        }
+    fun getNOK(): ConverterRow {
+        return ConverterRow("NOK", nOK)
+    }
 
-        fun getNZD(): ConverterRow {
-            return ConverterRow("NZD", nZD)
-        }
+    fun getNZD(): ConverterRow {
+        return ConverterRow("NZD", nZD)
+    }
 
-        fun getZAR(): ConverterRow {
-            return ConverterRow("ZAR", zAR)
-        }
+    fun getZAR(): ConverterRow {
+        return ConverterRow("ZAR", zAR)
+    }
 
-        fun getUSD(): ConverterRow {
-            return ConverterRow("USD", uSD)
-        }
+    fun getUSD(): ConverterRow {
+        return ConverterRow("USD", uSD)
+    }
 
-        fun getMXN(): ConverterRow {
-            return ConverterRow("MXN", mXN)
-        }
+    fun getMXN(): ConverterRow {
+        return ConverterRow("MXN", mXN)
+    }
 
-        fun getILS(): ConverterRow {
-            return ConverterRow("ILS", iLS)
-        }
+    fun getILS(): ConverterRow {
+        return ConverterRow("ILS", iLS)
+    }
 
-        fun getGBP(): ConverterRow {
-            return ConverterRow("GBP", gBP)
-        }
+    fun getGBP(): ConverterRow {
+        return ConverterRow("GBP", gBP)
+    }
 
-        fun getKRW(): ConverterRow {
-            return ConverterRow("KRW", kRW)
-        }
+    fun getKRW(): ConverterRow {
+        return ConverterRow("KRW", kRW)
+    }
 
-        fun getMYR(): ConverterRow {
-            return ConverterRow("MYR", mYR)
-        }
-
+    fun getMYR(): ConverterRow {
+        return ConverterRow("MYR", mYR)
+    }
 
 
     fun GetBase(): ArrayList<ConverterRow> { //ArrayList на случай изменения количества валют в Json ответе, чтобы можно было за несколько строк все обновить
@@ -201,7 +200,7 @@ data class Rates(
         Base.add(getGBP())
         Base.add(getKRW())
         Base.add(getMYR())
-        Base.add(ConverterRow("EUR",1.0))
+        Base.add(ConverterRow("EUR", 1.0))
         return Base
     }
 
