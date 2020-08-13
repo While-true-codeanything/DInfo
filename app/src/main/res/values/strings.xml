@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">DInfo</string>
+    <string name="CurHeader">Последние курсы валют</string>
+    <string name="restart_app">Попробовать снова</string>
+    <string name="toSet">Перейти в настройки</string>
+    <string name="colcr">Количество курсов на главной странице</string>
+    <string name="BSet">Установить</string>
+    <string name="Apply">Применить</string>
+    <string name="holiday_blank">На текущий день не обнаружено никаких праздников</string>
+    <string name="some_news">Некоторые новости</string>
+    <string name="news_coll">Количество новостей на главной странице</string>
+    <string name="Alllast">Все последние новости</string>
+    <string name="TodayNot">Записи на сегодня</string>
+    <string name="AddNot">Добавить напоминание</string>
+    <string name="Clear">Очистить данные</string>
+    <string name="All">Все напомнания</string>
+    <string name="CDate">Выбрать дату</string>
+    <string name="Save">Сохранить</string>
+    <string name="waytogetcoood">Метод получения местоположения</string>
+    <string name="Network">Network</string>
+    <string name="Gps">Gps</string>
+    <string name="cuCoord">Текущие координаты</string>
+    <string name="clearall">Очистить данные</string>
+    <string name="source">Источник информации</string>
+    <string name="fullweatherdata">Полные погодные данные на сегодня</string>
 </resources>

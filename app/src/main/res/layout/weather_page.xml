@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/cardview_dark_background"
+        android:text="@string/source" />
+
+    <RadioGroup
+        android:layout_width="167dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/s_met"
+            android:checked="true"
+            android:focusableInTouchMode="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="api.met" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/setback"
+        android:padding="5dp"
+        android:textColor="@color/cardview_dark_background"
+        android:text="@string/fullweatherdata" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/weather_rec"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager"
+        android:layout_weight="1">
+
+    </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>
